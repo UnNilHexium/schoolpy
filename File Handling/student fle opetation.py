@@ -7,8 +7,8 @@ def add_data():
     marks=int(input("Enter your marks"))
     s_data=[rno,name,clas,marks]
     pickle.dump(s_data,f1)
-    f1.close
-    return 0
+    f1.close()
+    return 
 def read_data():
     f1=open("ABC.dat","rb")
     s_data= pickle.load(f1)
@@ -17,6 +17,9 @@ def read_data():
         s_data=pickle.load(f1)
     print("EOF reached")
     f1.close()
+    return
+def search_file():
+    return
 while True:
     print("Student file operations\n    A:Add a new record\n    B:View all records\n    C:Search for a record\n     D:Exit")
     x=input("Enter your option").lower()
