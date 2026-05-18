@@ -14,7 +14,7 @@ def read_data():
     while True:
         try:
             s_data=pickle.load(f1)
-            print(s_data)
+            print("R. no", s_data[0],"name",s_data[1],"class",s_data[2],"marks",s_data[3])
         except:
             break
     print("EOF reached")
