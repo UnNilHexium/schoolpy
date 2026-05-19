@@ -10,16 +10,22 @@ def add_data():
     f1.close()
     return 
 def read_data():
-    f1=open("ABC.dat","rb")
-    i=1
-    while True:
-        try:
+    try:
+        f1=open("ABC.dat","rb")
+        i=1
+        while True:
             s_data=pickle.load(f1)
             print(i, "|  R. no: ", s_data[0],"|    Name: ",s_data[1],"|      class: ",s_data[2],"|   marks:",s_data[3])
             i+=1
             
-        except:
-            break
+    except EOFError:
+        print("File ended")
+        break
+    except FileNotFoundError:
+        print('File Not Found!!')
+    except:
+        print("Fatal Error!!")
+        break
     print("number of entries = ", i)
     print("EOF reached")
     f1.close()
