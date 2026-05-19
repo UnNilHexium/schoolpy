@@ -43,8 +43,11 @@ def search_rno():
             s_data=pickle.load(f1)
             if r==s_data[0]:
                  print("|  R. no: ", s_data[0],"|    Name: ",s_data[1],"|      class: ",s_data[2],"|   marks:",s_data[3])
+                 found=True
         except:
-
+            print("eof reached")
+        if !found:
+            print("No roll number found in search scope!")
     return
 def search_class():
     return
