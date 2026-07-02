@@ -24,7 +24,7 @@ def go():
         return 0
     else:
         print('invalid input, please try again')
-        retun go()
+        return go()
 
 
 def read_bin():
@@ -53,7 +53,7 @@ def do():
         return 2
     else:
         print('invalid input, please try again')
-        retun do()
+        return do()
 
 
 def main():
