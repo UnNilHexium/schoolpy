@@ -43,14 +43,32 @@ def read_bin():
                 f.close()
                 break
 
-
+def search_bin()
+    try:
+        f=open('book.dat',"rb")
+        bookno=int(input('enter book no. to search: '))
+    except FileNotFoundError:
+        print('File does not exist!!')
+    else:
+        while True:
+            try:
+                record=pickle.load(f)
+                print("Book no, Name, Author, Price")
+                if bookno == record[0]:
+                    print("--",record[0],record[1],record[2],record[3])
+            except EOFError:
+                print('EOF reached')
+                f.close()
+                break
 
 def do():
-    y=input("what do you wish to do?(Read file: r, Write to file: w):  ").lower()
+    y=input("what do you wish to do?(Read file: r, Write to file: w, search: s):  ").lower()
     if y == 'r':
         return 1
     elif y == 'w':
         return 2
+    elif y == 's':
+        return 3
     else:
         print('invalid input, please try again')
         return do()
@@ -67,6 +85,10 @@ def main():
         write_bin()
         while go():
             write_bin()
+    elif x==3:
+        search_bin():
+        while go():
+            search_bin()
     print('Exiting....')
 
 main()        
