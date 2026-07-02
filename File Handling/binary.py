@@ -46,7 +46,7 @@ def read_bin():
 
 
 def do():
-    y=input("what do you wish to do?(Read file: r, Write to file: w):  ").lower
+    y=input("what do you wish to do?(Read file: r, Write to file: w):  ").lower()
     if y == 'r':
         return 1
     elif y == 'w':
