@@ -17,7 +17,7 @@ def write_bin():
     f.close()
 
 def go():
-    y=input("go again?(y/n):  ").lower
+    y=input("go again?(y/n):  ").lower()
     if y == 'y':
         return 1
     elif y == 'n':
