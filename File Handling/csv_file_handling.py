@@ -22,4 +22,12 @@ def search():
             if data[0]==book_no:
                 print(data)
             
-
+        
+def modify():
+    book_no=int(input('Please enter book no. to modify: '))
+    with open('book.csv','r') as f:
+        r=csv.reader(f)
+        for data in r:
+            if data[0]==book_no:
+                 
+                 
