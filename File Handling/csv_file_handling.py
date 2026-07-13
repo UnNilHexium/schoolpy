@@ -27,7 +27,22 @@ def modify():
     book_no=int(input('Please enter book no. to modify: '))
     with open('book.csv','r') as f:
         r=csv.reader(f)
-        for data in r:
-            if data[0]==book_no:
-                 
+        booklist=list(r)
+        i=0
+        flag=0
+        while True:
+            if booklist[i][0]==book_no:
+                booklist[i][0]+=booklist[i][0]*0.1
+                flag=1
+                break
+            else:
+                i+=0
+        if flag==0:
+            print('record not found')
+        else:
+            f.close()
+            f=open("book.csv",'w',newline='')
+            w=csv.writer(f)
+            w.writerows(booklist)
+            f.close()
                  
