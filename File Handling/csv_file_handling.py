@@ -54,21 +54,44 @@ def modify():
     with open('book.csv','r') as f:
         r=csv.reader(f)
         booklist=list(r)
-        i=0
-        flag=0
-        while True:
-            if str(booklist[i][0])==book_no:
-                booklist[i][0]+=booklist[i][0]*0.1
-                flag=1
-                break
-            else:
-                i+=1
-        if flag==0:
-            print('record not found')
+    i=0
+    flag=0
+    for _ in range(len(booklist)):
+        if str(booklist[i][0])==book_no:
+            a+=float(booklist[i][3])*0.1
+            booklist[i][3]=str(a)
+            flag=1
+            break
         else:
-            f.close()
-            f=open("book.csv",'w',newline='')
+            i+=1
+    if flag==0:
+        print('record not found')
+    else:
+        with open("book.csv",'w',newline='') as f:
             w=csv.writer(f)
             w.writerows(booklist)
-            f.close()
+
                  
+
+
+def cdel():
+    with open('book.csv', 'r') as f:
+        data=csv.reader(f)
+        booklist=list(data)
+    a=input('Book No. to be deleted')
+    temp=[]
+    found=0
+    for i in booklist:
+        if i[0]==a:
+            found=1
+            continue
+        else:
+            temp.append(i)
+    booklist=temp
+    if found == 0:
+        print('book not found')    
+    else:
+        with open('book.csv','w') as f:
+            data=csv.writer(f)
+            data.writelines(booklist)
+        
