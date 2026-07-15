@@ -50,7 +50,7 @@ def modify():
             w.writerows(temp)
 
 
-def modify():
+def delete():
     with open('cust.csv','r') as f:
         r=csv.reader(f)
         cust_list=list(r)
