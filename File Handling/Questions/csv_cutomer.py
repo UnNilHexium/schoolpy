@@ -23,7 +23,7 @@ def search():
     found = False
     search=input('Please enter Customer Number: ')
     for data in cust_list:
-        if i[0] == search:
+        if data[0] == search:
             print("--",data[0]," | ",data[1]," | ",data[2]," | ",data[3]," | ")
             found = True
     if not found:
