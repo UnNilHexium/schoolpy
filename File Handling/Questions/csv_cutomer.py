@@ -70,3 +70,27 @@ def delete():
         with open('cust.csv','a',newline='') as f:
             w=csv.writer(f)
             w.writerows(temp)
+
+
+def main():
+    print('WELCOME TO APETURE SCIENCE CUSTOMER RECORDS')
+    print('You can - \nAdd (1)\nShow records (2)\nSearch (3)\nModify (4)\nDelete(5)')
+    x=int(input('What do you wish to do? (Enter Number):  '))
+    if x==1:
+        add()
+    elif x==2:
+        show()
+    elif x==3:
+        search()
+    elif x==4:
+        modify()
+    elif x==5:
+        delete()
+    else:
+        print('invalid input, try again')
+        main() 
+    
+while y:
+    main()
+    print('Continue? (1)\n      OR   \nExit? (0)')
+    y=int(input('enter choice:'))
