@@ -89,7 +89,7 @@ def main():
     else:
         print('invalid input, try again')
         main() 
-    
+y=1    
 while y:
     main()
     print('Continue? (1)\n      OR   \nExit? (0)')
