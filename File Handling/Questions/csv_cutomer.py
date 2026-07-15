@@ -75,16 +75,16 @@ def delete():
 def main():
     print('WELCOME TO APETURE SCIENCE CUSTOMER RECORDS')
     print('You can - \nAdd (1)\nShow records (2)\nSearch (3)\nModify (4)\nDelete(5)')
-    x=int(input('What do you wish to do? (Enter Number):  '))
-    if x==1:
+    x=input('What do you wish to do? (Enter Number):  ')
+    if x=='1':
         add()
-    elif x==2:
+    elif x=='2':
         show()
-    elif x==3:
+    elif x=='3':
         search()
-    elif x==4:
+    elif x=='4':
         modify()
-    elif x==5:
+    elif x=='5':
         delete()
     else:
         print('invalid input, try again')
