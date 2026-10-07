@@ -49,3 +49,14 @@ def upd_rec():
     '''
     mycur.execute(sql, Data)
     mycur.commit()
+
+def view_all():
+    mycur.execute("Select * from Students;")
+    data = mycur.fetchall()
+    print(data)
+
+def view_spec():
+    Section = input("what section's data do you want to view? ")
+    mycur.execute("Select * from Students where Section = %s;",(Section,))
+    data = mycur.fetchall()
+    print(data)
