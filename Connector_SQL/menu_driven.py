@@ -1,6 +1,6 @@
 import mysql.connector as c
 
-mycon = m.connect(user="root", password="welcome", host="localhost")
+mycon = c.connect(user="root", password="welcome", host="localhost")
 
 mycur=mycon.cursor()
 
@@ -60,3 +60,33 @@ def view_spec():
     mycur.execute("Select * from Students where Section = %s;",(Section,))
     data = mycur.fetchall()
     print(data)
+
+def main():
+    while True:
+        print("--- Student Management System ---")
+        print("1. Add Record")
+        print("2. Delete Record")
+        print("3. Update Record")
+        print("4. View All Records")
+        print("5. View Records by Section")
+        print("6. Exit")
+        
+        choice = input("Enter your choice (1-6): ")
+        
+        if choice == '1':
+            add_rec()
+        elif choice == '2':
+            del_rec()
+        elif choice == '3':
+            upd_rec()
+        elif choice == '4':
+            view_all()
+        elif choice == '5':
+            view_spec()
+        elif choice == '6':
+            print("Exiting program. Goodbye!")
+            break
+        else:
+            print("Invalid choice! Please enter a number between 1 and 6.\n")
+
+main()
