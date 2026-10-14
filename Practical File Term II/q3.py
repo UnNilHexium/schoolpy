@@ -34,18 +34,17 @@ def alter():
     action = int(input("Enter choice (1, 2, or 3): "))
 
     if action == 1:
-        # Assuming define_column() returns: (col_name, data_type, details)
-        col_name, data_type, details = define_column()
-        sql = f"ALTER TABLE products ADD COLUMN {col_name} {data_type} {details}"
+        details = define_column()
+        sql = "ALTER TABLE products ADD COLUMN %s %s %s", details
 
     elif action == 2:
         col_name = input("Enter the column name to modify: ")
         new_type = input("Enter the new data type (e.g., VARCHAR(100) NOT NULL): ")
-        sql = f"ALTER TABLE products MODIFY COLUMN {col_name} {new_type}"
+        sql = "ALTER TABLE products MODIFY COLUMN %s %s", (col_name,new_type)
 
     elif action == 3:
         col_name = input("Enter the column name to drop: ")
-        sql = f"ALTER TABLE products DROP COLUMN {col_name}"
+        sql = "ALTER TABLE products DROP COLUMN %s" (col_name,)
 
     else:
         print("Invalid option selected.")
@@ -53,3 +52,12 @@ def alter():
 
     print(f"\nGenerated Query:\n{sql}")
     return sql
+
+def update_tbl():
+    col= input("Enter column to change : ")
+    mycur.execute("desc products")
+    print(mycur.fetchall())
+    val = input("Enter values to update, in sql syntax, comma sperated :")
+    cond = input ("Enter any conditions , in sql syntax ")
+    sql = '''update products
+    set ''' + col '=' + val +'where'+cond
