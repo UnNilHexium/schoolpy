@@ -20,6 +20,14 @@ QOH integer(4)
 
 mycur.execute(sql)
 
+def execute(sql):
+    try:
+        mycur.execute(sql)
+        mycur.commit()
+    except:
+        print("Invalid input. Try again!")
+        return
+
 def define_column():
     n = input("Column name - ")
     d = input("datatype in sql syntax - ")
@@ -48,16 +56,58 @@ def alter():
 
     else:
         print("Invalid option selected.")
-        return None
+        return 
 
-    print(f"\nGenerated Query:\n{sql}")
-    return sql
+    execute(sql)
 
 def update_tbl():
-    col= input("Enter column to change : ")
     mycur.execute("desc products")
     print(mycur.fetchall())
+    col= input("Enter column to change : ")
     val = input("Enter values to update, in sql syntax, comma sperated :")
     cond = input ("Enter any conditions , in sql syntax ")
     sql = '''update products
-    set ''' + col '=' + val +'where'+cond
+    set ''' + col '=' + val +'where'+cond + ";"
+    execute(sql)
+
+def order_by():
+    mycur.execute("desc products")
+    print(mycur.fetchall())
+    field = input("Enter field to order by")
+    order = input("'A' - Ascending\n'D' - Descending").lower() 
+    if order == "a":
+        order = "Asc"
+    elif order == "d" :
+        order = "DESC"
+    else :
+        print("invalid input. try again!")
+        return
+    sql = '''select * from products
+    order by''' + field + order + ";"
+    execute(sql)
+
+def delete_from():
+    mycur.execute("desc products")
+    print(mycur.fetchall())
+    cond = input("enter deletion condition (eg. Pno = 12345)")
+    sql = '''Delete from products
+    where %s ;'''(cond,)
+    execute(sql)
+
+def group_info():
+    mycur.execute("desc products")
+    print(mycur.fetchall())
+    category = input("what category would you like to group by? ")
+    op1 = input("on what would you like to apply min, max, sum, and averge funtion? ")
+    inputs = (category,op1,op1,op1,op1,category)
+    sql = '''select 
+    %s,
+    min(%s) as min,
+    max(%s) as max,
+    sum(%s) as sum,
+    avg(%s) as average
+    count(*) as count
+    from products
+    Group by %s''', inputs
+    execute(sql)
+
