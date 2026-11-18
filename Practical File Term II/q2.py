@@ -26,7 +26,7 @@ while rep:
         else:
             print("Member Number \t Member Name \t Member Age")
             for i in range(len(stack) - 1, -1, -1):
-                temp= stack.pop()
+                temp= stack[i]
                 print(temp[0], "\t\t\t" , temp[1], "\t\t\t" , temp[2]) 
     else:
         print("Invalid choice. Please enter 1, 2, 3, or 4.")
